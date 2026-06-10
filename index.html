@@ -1,419 +1,78 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saladcor - Keseimbangan Rasa & Kesegaran</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
-    
+    <title>Saladcor - Kesegaran Buah Pilihan Setiap Hari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* --- PALET WARNA & BASE STYLE --- */
-        :root {
-            --primary-colorful: #e67e22; /* Oranye Bersemangat */
-            --secondary-colorful: #f1c40f; /* Kuning Cerah */
-            --light-green: #dff9fb; /* Latar Belakang Hijau Pastel */
-            --mint-green: #a29bfe; /* Aksen Ungu Pastel */
-            --dark-pink: #fd79a8; /* Aksen Pink Pastel */
-            --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--light-green);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        .container {
-            width: 88%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
-
-        /* --- NAVBAR --- */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--primary-colorful);
-        }
-
-        .logo span {
-            color: var(--dark-pink);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-colorful);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 180px 0 100px 0;
-            display: flex;
-            align-items: center;
-            min-height: 90vh;
-            background: linear-gradient(135deg, var(--light-green) 0%, #fff 100%);
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 52px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-text h1 span {
-            background: linear-gradient(to right, var(--primary-colorful), var(--dark-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .slogan-kekinian {
-            font-size: 22px;
-            color: var(--text-dark);
-            font-weight: 400;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .hero-text p {
-            font-size: 18px;
-            color: #7f8c8d;
-            margin-bottom: 40px;
-        }
-
-        .btn-order {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary-colorful), var(--secondary-colorful));
-            color: var(--text-light);
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.3);
-            transition: 0.3s;
-        }
-
-        .btn-order:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(230, 126, 34, 0.5);
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-
-        /* --- WHY US / MANFAAT SECTION --- */
-        .why-section, .benefits-section {
-            padding: 80px 0;
-            background-color: var(--white);
-        }
-
-        .section-title {
-            font-size: 40px;
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--text-dark);
-        }
-
-        .section-title span {
-            color: var(--primary-colorful);
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .info-card {
-            background-color: var(--light-green);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .info-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .info-card i {
-            font-size: 50px;
-            color: var(--dark-pink);
-            margin-bottom: 25px;
-        }
-
-        .info-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        /* --- PRICING SECTION --- */
-        .pricing-section {
-            padding: 100px 0;
-            background: linear-gradient(to right, #81ecec, #a29bfe);
-        }
-
-        .pricing-section .section-title {
-            color: var(--white);
-        }
-
-        .pricing-grid {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-
-        .price-card {
-            background-color: var(--white);
-            border-radius: 30px;
-            padding: 60px 40px;
-            width: 320px;
-            position: relative;
-            text-align: center;
-            transition: 0.4s;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        }
-
-        .price-card:hover {
-            transform: scale(1.05);
-        }
-
-        .price-card.popular {
-            background: linear-gradient(135deg, var(--white) 0%, #fff6ea 100%);
-            border: 3px solid var(--secondary-colorful);
-        }
-
-        .badge-wa {
-            position: absolute;
-            top: -20px;
-            right: 30px;
-            background-color: #25D366; /* Hijau WhatsApp */
-            color: var(--white);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 14px;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-        }
-
-        .price-card img {
-            width: 120px;
-            margin-bottom: 30px;
-        }
-
-        .price-card h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-
-        .price {
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--primary-colorful);
-            margin-bottom: 25px;
-        }
-
-        .price-card ul {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 40px;
-        }
-
-        .price-card ul li {
-            margin-bottom: 12px;
-            font-size: 16px;
-            color: #666;
-        }
-
-        .price-card ul li i {
-            color: var(--dark-pink);
-            margin-right: 10px;
-        }
-
-        .btn-wa {
-            display: inline-block;
-            background-color: #25D366;
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            width: 100%;
-            transition: 0.3s;
-        }
-
-        .btn-wa:hover {
-            background-color: #1eb954;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #2c3e50;
-            color: var(--text-light);
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 16px;
-            opacity: 0.8;
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-text h1 { font-size: 40px; }
-            .pricing-grid { gap: 30px; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-    <header>
-        <nav class="container">
-            <div class="logo">Salad<span>cor</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#why">Kenapa Kami?</a></li>
-                <li><a href="#menu">Pesan WA</a></li>
-                <li><a href="#benefits">Manfaat</a></li>
-            </ul>
-        </nav>
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl font-extrabold text-green-600 tracking-tight">Salad<span class="text-yellow-500">cor.</span></span>
+            </div>
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-600">
+                <a href="#home" class="hover:text-green-600 transition">Home</a>
+                <a href="#menu" class="hover:text-green-600 transition">Menu & Harga</a>
+                <a href="#pembayaran" class="hover:text-green-600 transition">Cara Bayar</a>
+                <a href="#kontak" class="hover:text-green-600 transition">Kontak</a>
+            </nav>
+            <div>
+                <a href="https://wa.me/6281234567890?text=Halo%20Saladcor,%20saya%20mau%20pesan%20salad%20buahnya!" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-green-600/20 transition text-sm flex items-center gap-2">
+                    Order via WA
+                </a>
+            </div>
+        </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <h1>Lagi Pengen yang <span>Seger-Seger</span> Tapi Males Ribet?</h1>
-                <p class="slogan-kekinian">#Saladcore: Rasa Juara, Gizi Terjaga!</p>
-                <p>Saladcor hadir dengan kombinasi buah-buahan premium pilihan, saus mayo legendaris creamy yang 'gak bikin eneg', dan taburan keju melimpah yang 'pecah di mulut'.</p>
-                <a href="#menu" class="btn-order">Cuss, Pesan Sekarang! <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=700&q=80" alt="Fresh Saladcor Mockup">
-            </div>
-        </div>
-    </section>
-
-    <section id="why" class="why-section">
-        <div class="container">
-            <h2 class="section-title">Kenapa Harus <span>Saladcor</span>?</h2>
-            <div class="cards-grid">
-                <div class="info-card">
-                    <i class="fas fa-apple-alt"></i>
-                    <h3>Buah Grade A</h3>
-                    <p>Cuma pake buah premium yang dipotong dadu presisi. Gak ada buah 'layu' di sini!</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-blender"></i>
-                    <h3>Saus Mayo Secret Recipe</h3>
-                    <p>Mayo creamy rahasia kami dibikin fresh setiap hari. Perpaduan manis & gurihnya pas banget.</p>
-                </div>
-                <div class="info-card">
-                    <i class="fas fa-cheese"></i>
-                    <h3>Cheese Overload!</h3>
-                    <p>Gak pelit keju! Taburan keju cheddar parutnya melimpah ruah sampai nutupin buah.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="menu" class="pricing-section">
-        <div class="container">
-            <h2 class="section-title">Dua Ukuran, Dua Kebahagiaan</h2>
-            <div class="pricing-grid">
-                
-                <div class="price-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3058/3058995.png" alt="Ukuran Kecil">
-                    <h3>Ukuran Kecil</h3>
-                    <div class="price">Rp 10k</div>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Porsi pas buat personal</li>
-                        <li><i class="fas fa-check-circle"></i> Kombinasi 5 jenis buah</li>
-                        <li><i class="fas fa-check-circle"></i> Saus Mayo Original</li>
-                    </ul>
-                    <a href="https://wa.me/081234567890?text=Halo%20Saladcor,%20saya%20mau%20pesan%20Salad%20Ukuran%20Kecil" class="btn-wa" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Pesan Kecil
+    <section id="home" class="py-12 md:py-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-center md:text-left">
+                <span class="bg-green-100 text-green-800 text-sm font-bold px-4 py-1.5 rounded-full">🥗 100% Premium & Segar</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+                    Cara Enak Nikmati <span class="text-green-600 block md:inline">Hidup Sehat!</span>
+                </h1>
+                <p class="text-lg text-slate-600 max-w-md mx-auto md:mx-0">
+                    Kombinasi buah-buahan premium tropis super segar dengan *dressing* keju legit rahasia khas **Saladcor**. Bikin nagih sejak suapan pertama!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+                    <a href="#menu" class="bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-extrabold px-8 py-4 rounded-2xl shadow-xl shadow-yellow-500/20 transition text-center">
+                        Lihat Menu Kami
                     </a>
-                </div>
-
-                <div class="price-card popular">
-                    <div class="badge-wa">Paling Puas</div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/3058/3058997.png" alt="Ukuran Besar">
-                    <h3>Ukuran Besar</h3>
-                    <div class="price">Rp 15k</div>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Porsi besar & mengenyangkan</li>
-                        <li><i class="fas fa-check-circle"></i> Ekstra buah & jelly premium</li>
-                        <li><i class="fas fa-check-circle"></i> Double toping keju parut</li>
-                    </ul>
-                    <a href="https://wa.me/081234567890?text=Halo%20Saladcor,%20saya%20mau%20pesan%20Salad%20Ukuran%20Besar" class="btn-wa" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Pesan Besar
+                    <a href="https://wa.me/6281234567890?text=Halo%20Saladcor,%20saya%20mau%20tanya%20promo%20hari%20ini" target="_blank" class="border-2 border-slate-200 hover:border-slate-300 bg-white font-bold px-8 py-4 rounded-2xl transition text-center text-slate-700">
+                        Hubungi Admin
                     </a>
                 </div>
             </div>
+            <div class="relative flex justify-center">
+                <div class="absolute inset-0 bg-yellow-200 rounded-full filter blur-3xl opacity-30 w-72 h-72 m-auto"></div>
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" alt="Salad Buah Segar" class="relative rounded-3xl shadow-2xl object-cover w-full max-w-md aspect-[4/3] transform hover:scale-105 transition duration-500">
+            </div>
         </div>
     </section>
 
-    <section id="benefits" class="benefits-section">
-        <div class="container">
-            <h2 class="section-title">Manfaat <span>Nyata</span> Salad Buah</h2>
-            <div
+    <section id="menu" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Varian Menu Favorit</h2>
+                <p class="text-slate-500">Pilih ukuran dan kombinasi topping yang paling pas buat nemenin hari kamu.</p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-50 rounded-3xl p-4 border border-slate-100 hover:shadow-xl transition group">
+                    <div class="overflow-hidden rounded-2xl mb-4 aspect-video">
+                        <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=600&q=80" alt="Salad Personal" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="px-2 pb-2 space-y-2">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-slate-900">Saladcor Personal</h3>
+                            <span class="text-green-600 font-extrabold text-lg">Rp 25.000</span>
+                        </div>
+                        <p class="text-slate-500 text-sm">Porsi pas (300ml) buat camilan sehat sendiri. Include melon, semangka, apel, anggur, dan taburan keju melimpah.</p>
+                        <a href="https://wa.me/6281234567890?text=Saya%20mau%20pesan%20Saladcor%20Personal" target="_blank" class="block w-full bg-green-600 text-white text-center font-bold py-2.5 rounded-xl text-sm hover:bg-green-700 transition pt
