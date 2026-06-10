@@ -1,78 +1,478 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saladcor - Kesegaran Buah Pilihan Setiap Hari</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Saladcor - Sehat, Segar, Praktis!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        /* --- PALET WARNA & BASE RESET --- */
+        :root {
+            --primary: #FF6B35;       /* Oranye Mencolok & Segar */
+            --secondary: #FFB100;     /* Kuning Cerah Kontras */
+            --dark: #2F2E41;          /* Abu-abu Gelap Modern */
+            --light: #FFF8F5;         /* Background Hangat */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 140px 20px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .hero-text h1 span {
+            color: var(--primary);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .slogan {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: #FFF1CC;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+            transition: 0.3s transform, 0.3s box-shadow;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.6);
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* --- MENU SECTION --- */
+        .menu-section {
+            background: var(--white);
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .section-title p {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .menu-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-card {
+            background: var(--light);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+        }
+
+        .menu-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 30px;
+        }
+
+        .menu-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .menu-features {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 50px;
+            background: #FFEBE3;
+            color: var(--primary);
+        }
+
+        .badge.blue {
+            background: #E3F2FD;
+            color: #0D47A1;
+        }
+
+        .menu-info p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .menu-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        /* --- PAYMENT & HOW TO ORDER --- */
+        .payment-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .info-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+
+        .info-box i {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .info-box h3 {
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 24px;
+            color: var(--secondary);
+        }
+
+        /* --- FOOTER / CONTACT --- */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 60px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-content h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 18px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding-top: 100px;
+            }
+            .nav-menu {
+                display: none; /* Bisa dikembangkan dengan hamburger menu */
+            }
+            .hero-text h1 {
+                font-size: 36px;
+            }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body>
 
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <span class="text-2xl font-extrabold text-green-600 tracking-tight">Salad<span class="text-yellow-500">cor.</span></span>
-            </div>
-            <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-600">
-                <a href="#home" class="hover:text-green-600 transition">Home</a>
-                <a href="#menu" class="hover:text-green-600 transition">Menu & Harga</a>
-                <a href="#pembayaran" class="hover:text-green-600 transition">Cara Bayar</a>
-                <a href="#kontak" class="hover:text-green-600 transition">Kontak</a>
+    <header>
+        <div class="nav-container">
+            <div class="logo">Salad<span>cor</span></div>
+            <nav class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#pembayaran">Cara Bayar</a>
+                <a href="#kontak">Kontak</a>
             </nav>
-            <div>
-                <a href="https://wa.me/6281234567890?text=Halo%20Saladcor,%20saya%20mau%20pesan%20salad%20buahnya!" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-green-600/20 transition text-sm flex items-center gap-2">
-                    Order via WA
-                </a>
-            </div>
         </div>
     </header>
 
-    <section id="home" class="py-12 md:py-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6 text-center md:text-left">
-                <span class="bg-green-100 text-green-800 text-sm font-bold px-4 py-1.5 rounded-full">🥗 100% Premium & Segar</span>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
-                    Cara Enak Nikmati <span class="text-green-600 block md:inline">Hidup Sehat!</span>
-                </h1>
-                <p class="text-lg text-slate-600 max-w-md mx-auto md:mx-0">
-                    Kombinasi buah-buahan premium tropis super segar dengan *dressing* keju legit rahasia khas **Saladcor**. Bikin nagih sejak suapan pertama!
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
-                    <a href="#menu" class="bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-extrabold px-8 py-4 rounded-2xl shadow-xl shadow-yellow-500/20 transition text-center">
-                        Lihat Menu Kami
-                    </a>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Saladcor,%20saya%20mau%20tanya%20promo%20hari%20ini" target="_blank" class="border-2 border-slate-200 hover:border-slate-300 bg-white font-bold px-8 py-4 rounded-2xl transition text-center text-slate-700">
-                        Hubungi Admin
-                    </a>
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <div class="slogan">Sehat, Segar, Praktis!</div>
+            <h1>Cara Enak Makan Sayur & Buah Premium di <span>Saladcor</span></h1>
+            <p>Nikmati kombinasi isian segar premium yang digulung sempurna dengan rice paper lembut, lengkap dengan pilihan dressing racikan spesial yang bikin ketagihan!</p>
+            <a href="#menu" class="btn">Pesan Sekarang <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Premium Salad Roll Saladcor">
+        </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+        <div class="section-title">
+            <p>Varian Menu Favorit</p>
+            <h2>Pilih Varian Saladcor-mu</h2>
+        </div>
+        
+        <div class="menu-container">
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=500&q=80" alt="Salad Buah Roll" class="menu-img">
+                <div class="menu-info">
+                    <div class="menu-features">
+                        <span class="badge">Isi 3 Roll</span>
+                        <span class="badge blue">Dressing Manis</span>
+                    </div>
+                    <h3 class="menu-title">Salad Buah Roll</h3>
+                    <p>Kombinasi potongan buah-buahan segar pilihan (mangga, stroberi, kiwi/anggur) yang digulung praktis. Disajikan bersama dressing manis *creamy* khas Saladcor.</p>
+                    <div class="menu-footer">
+                        <div class="price">Rp 17.000</div>
+                        <a href="https://wa.me/6281234567890?text=Halo%20Saladcor,%20saya%20mau%20pesan%20Salad%20Buah%20Roll" target="_blank" class="btn btn-sm">Beli</a>
+                    </div>
                 </div>
             </div>
-            <div class="relative flex justify-center">
-                <div class="absolute inset-0 bg-yellow-200 rounded-full filter blur-3xl opacity-30 w-72 h-72 m-auto"></div>
-                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" alt="Salad Buah Segar" class="relative rounded-3xl shadow-2xl object-cover w-full max-w-md aspect-[4/3] transform hover:scale-105 transition duration-500">
+
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80" alt="Salad Sayur Roll" class="menu-img">
+                <div class="menu-info">
+                    <div class="menu-features">
+                        <span class="badge">Isi 3 Roll</span>
+                        <span class="badge">Dressing Asin/Gurih</span>
+                    </div>
+                    <h3 class="menu-title">Salad Sayur Roll</h3>
+                    <p>Sayuran bertekstur renyah dan hidroponik segar (selada, wortel, kubis ungu, timun) berbalut *rice paper* higienis dengan cocolan dressing asin gurih gurih nikmat.</p>
+                    <div class="menu-footer">
+                        <div class="price">Rp 15.000</div>
+                        <a href="https://wa.me/6281234567890?text=Halo%20Saladcor,%20saya%20mau%20pesan%20Salad%20Sayur%20Roll" target="_blank" class="btn btn-sm">Beli</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="menu" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Varian Menu Favorit</h2>
-                <p class="text-slate-500">Pilih ukuran dan kombinasi topping yang paling pas buat nemenin hari kamu.</p>
+    <section class="payment-section" id="pembayaran">
+        <div class="section-title">
+            <p>Mudah & Tanpa Ribet</p>
+            <h2>Cara Order & Pembayaran</h2>
+        </div>
+        
+        <div class="grid-info">
+            <div class="info-box">
+                <i class="fas fa-shopping-basket"></i>
+                <h3>1. Pilih & Klik Menu</h3>
+                <p>Pilih varian salad roll favoritmu di atas, lalu klik tombol "Beli".</p>
             </div>
-            
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-slate-50 rounded-3xl p-4 border border-slate-100 hover:shadow-xl transition group">
-                    <div class="overflow-hidden rounded-2xl mb-4 aspect-video">
-                        <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=600&q=80" alt="Salad Personal" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                    </div>
-                    <div class="px-2 pb-2 space-y-2">
-                        <div class="flex justify-between items-center">
-                            <h3 class="text-xl font-bold text-slate-900">Saladcor Personal</h3>
-                            <span class="text-green-600 font-extrabold text-lg">Rp 25.000</span>
-                        </div>
-                        <p class="text-slate-500 text-sm">Porsi pas (300ml) buat camilan sehat sendiri. Include melon, semangka, apel, anggur, dan taburan keju melimpah.</p>
-                        <a href="https://wa.me/6281234567890?text=Saya%20mau%20pesan%20Saladcor%20Personal" target="_blank" class="block w-full bg-green-600 text-white text-center font-bold py-2.5 rounded-xl text-sm hover:bg-green-700 transition pt
+            <div class="info-box">
+                <i class="fab fa-whatsapp"></i>
+                <h3>2. Konfirmasi Chat</h3>
+                <p>Kamu akan langsung diarahkan ke WhatsApp kami untuk mengirimkan alamat detail pengiriman.</p>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-wallet"></i>
+                <h3>3. Pembayaran</h3>
+                <p>Mendukung berbagai metode pembayaran nontunai modern maupun COD.</p>
+                <div class="payment-icons">
+                    <i class="fas fa-money-bill-wave" title="COD"></i>
+                    <i class="fas fa-qrcode" title="QRIS / E-Wallet"></i>
+                    <i class="fas fa-university" title="Transfer Bank"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="kontak">
+        <div class="footer-content">
+            <h2>Gak Pake Lama, Yuk Order!</h2>
+            <p>Punya pertanyaan atau ingin kustomisasi pesanan untuk acara pesta/diet harian? Hubungi admin Saladcor sekarang juga via WhatsApp.</p>
+            <a href="https://wa.me/6281234567890?text=Halo%20Saladcor,%20saya%20ingin%20tanya%20info%20kemitraan/pemesanan" target="_blank" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
+            </a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Saladcor. All Rights Reserved. | Sehat, Segar, Praktis!
+        </div>
+    </footer>
+
+</body>
+</html>
